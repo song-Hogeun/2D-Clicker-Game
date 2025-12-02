@@ -323,8 +323,8 @@ MonoBehaviour:
   IgnoreTimeScale: 0
   WorldUpOverride: {fileID: 0}
   ChannelMask: -1
-  UpdateMethod: 2
-  BlendUpdateMethod: 1
+  UpdateMethod: 0
+  BlendUpdateMethod: 0
   LensModeOverride:
     Enabled: 0
     DefaultMode: 2
@@ -508,6 +508,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1358634809 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2254657121696942669, guid: 4dfcf093c3aa8644896dcea2c3dfecee, type: 3}
+  m_PrefabInstance: {fileID: 1989664705}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1365760343
 GameObject:
   m_ObjectHideFlags: 0
@@ -662,6 +667,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wizard
       objectReference: {fileID: 0}
+    - target: {fileID: 3829707524886100630, guid: 4dfcf093c3aa8644896dcea2c3dfecee, type: 3}
+      propertyPath: _anim
+      value: 
+      objectReference: {fileID: 1358634809}
     - target: {fileID: 5260106340911891966, guid: 4dfcf093c3aa8644896dcea2c3dfecee, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
