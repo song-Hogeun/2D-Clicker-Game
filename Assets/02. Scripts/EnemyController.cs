@@ -118,11 +118,4 @@ public class EnemyController : MonoBehaviour, IDamageable
         }
     }
     #endregion
-    
-    private void OnDrawGizmos()
-    {
-        if (rb == null) return;
-        Gizmos.color = Color.red;
-        Gizmos.DrawLine(rb.position, rb.position + Vector2.left * 1f);
-    }
 }

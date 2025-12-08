@@ -34,6 +34,8 @@ public class PlayerController : MonoBehaviour, IDamageable
     private bool canMove = true;
     private bool isDeath = false;
 
+    public float AttackPower => attackPower;
+
     // 플레이어 전투 타입
     [SerializeField] private EPlayerType playerType;
     
@@ -107,13 +109,13 @@ public class PlayerController : MonoBehaviour, IDamageable
             case EPlayerType.Archor:
                 attackPower = 50f;
                 attackDelay = 3.5f;
-                attackDistance = 2f;
+                attackDistance = 2.2f;
                 break;
             
             case EPlayerType.Wizard:
                 attackPower = 100f;
                 attackDelay = 5f;
-                attackDistance = 3f;
+                attackDistance = 3.4f;
                 break;
         }
     }
@@ -158,11 +160,4 @@ public class PlayerController : MonoBehaviour, IDamageable
         }
     }
     #endregion
-    
-    private void OnDrawGizmos()
-    {
-        if (rb == null) return;
-        Gizmos.color = Color.red;
-        Gizmos.DrawLine(rb.position, rb.position + Vector2.right * attackDistance);
-    }
 }
