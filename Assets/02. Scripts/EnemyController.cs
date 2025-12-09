@@ -16,12 +16,11 @@ public class EnemyController : MonoBehaviour, IDamageable
     // 공격 관련
     private float attackPower = 5f;
     private float attackDelay = 5f;
-    private float attackDistance = 0.8f;
+    private float attackDistance = 1.2f;
     private float currentAttackTimer;
 
     // 상태 변수
-    private bool canMove = true;
-    private bool isAttack = false;
+    private bool canMove = false;
     private bool isDeath = false;
     
     // 감지할 레이어
@@ -38,23 +37,29 @@ public class EnemyController : MonoBehaviour, IDamageable
     
     private void Update()
     {
-        CheckPlayer();
+        if (isDeath)
+            return;
         
-        if (isAttack)
-            OnAttack();
-    }
-    
-    private void FixedUpdate()
-    {
-        OnMove();
+        CheckPlayer();  // 플레이어가 주변에 있는지 체크
+        Think();        // 이후 행동
     }
     #endregion
     
     #region 행동 코드
-    private void OnMove()
+
+    private void Think()
     {
-        if (isAttack) return;
-        anim.SetBool(MoveAnimParam, canMove);
+        if (CheckPlayer())
+        {
+            anim.SetBool(MoveAnimParam, true);
+        }
+        else
+        {
+            anim.SetBool(MoveAnimParam, false);
+            OnAttack();
+        }
+        
+        Debug.Log(CheckPlayer());
     }
     
     private void OnAttack()
@@ -73,7 +78,7 @@ public class EnemyController : MonoBehaviour, IDamageable
     #endregion
     
     #region 기타 함수
-    private void CheckPlayer()
+    private bool CheckPlayer()
     {
         RaycastHit2D hit = Physics2D.Raycast(
             rb.position,
@@ -81,24 +86,22 @@ public class EnemyController : MonoBehaviour, IDamageable
             attackDistance,
             playerLayer
         );
+        
+        Debug.DrawRay(transform.position, Vector2.left * attackDistance, Color.yellow); 
 
-        if (hit.collider != null)
-        {
-            // Player 감지 → 이동 멈추고 공격 상태
-            canMove = false;
-            isAttack = true;
-        }
-        else
-        {
-            // Player 없음 → 이동 모드
-            canMove = true;
-            isAttack = false;
-        }
+        // Player 감지 → 이동 멈추고 공격 상태
+        if (hit.collider != null) canMove = false;
+        // Player 없음 → 이동 모드
+        else canMove = true;
+
+        return canMove;
     }
     
     // 데미지 처리 함수
     public void TakeDamage(float damage)
     {
+        if (isDeath) return;
+        
         currentHP -= damage;
         
         anim.SetTrigger(DamageAnimParam);
@@ -106,7 +109,6 @@ public class EnemyController : MonoBehaviour, IDamageable
         if (currentHP <= 0)
         {
             isDeath = true;
-            
             anim.SetTrigger(DeathAnimParam);
         }
     }
