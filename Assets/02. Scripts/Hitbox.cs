@@ -3,21 +3,16 @@ using UnityEngine;
 [RequireComponent(typeof(Collider2D))]
 public class Hitbox : MonoBehaviour
 {
-    private Animator anim;
-
     [Header("데미지 설정")]
-    [SerializeField] private float damage => 10f;
+    [SerializeField] private float damage;
 
     [Header("타겟 레이어")]
     [SerializeField] private LayerMask targetLayerMask;
 
-    private Collider2D _collider;
+    [SerializeField] private BoxCollider2D _collider;
 
     private void Awake()
     {
-        _collider = GetComponent<Collider2D>();
-        anim = GetComponentInParent<Animator>();
-        
         _collider.isTrigger = true; // 히트박스는 보통 Trigger로 사용
     }
 

@@ -1,7 +1,7 @@
+using System;
 using UnityEngine;
 using static Constants;
 
-// 필수 컴포넌트
 [RequireComponent(typeof(Rigidbody2D))]
 public class EnemyController : MonoBehaviour, IDamageable
 {
@@ -10,14 +10,13 @@ public class EnemyController : MonoBehaviour, IDamageable
     private Animator anim;
     
     // 기본 스탯
-    private float applySpeed;
-    private float moveSpeed = 3f;
     private float maxHP = 100f;
     private float currentHP;
     
     // 공격 관련
     private float attackPower = 5f;
     private float attackDelay = 5f;
+    private float attackDistance = 0.8f;
     private float currentAttackTimer;
 
     // 상태 변수
@@ -34,13 +33,15 @@ public class EnemyController : MonoBehaviour, IDamageable
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponentInChildren<Animator>();
         
-        applySpeed = moveSpeed;
         currentHP = maxHP;
     }
     
     private void Update()
     {
         CheckPlayer();
+        
+        if (isAttack)
+            OnAttack();
     }
     
     private void FixedUpdate()
@@ -50,55 +51,48 @@ public class EnemyController : MonoBehaviour, IDamageable
     #endregion
     
     #region 행동 코드
-    // 이동 코드
     private void OnMove()
     {
-        if (!isAttack)
-        {
-            anim.SetBool(MoveAnimParam, false);    
-            return;
-        }
-        
-        rb.linearVelocityX = applySpeed;
-        anim.SetBool(MoveAnimParam, true);
+        if (isAttack) return;
+        anim.SetBool(MoveAnimParam, canMove);
     }
     
     private void OnAttack()
     {
-        if (currentAttackTimer >= 0) 
+        if (currentAttackTimer > 0f) 
         {
             currentAttackTimer -= Time.deltaTime;
             return;
         }
-
-        rb.linearVelocityX = 0;
+        
         anim.SetTrigger(AttackAnimParam);
-
+        
         currentAttackTimer = attackDelay;
     }
+
     #endregion
     
     #region 기타 함수
     private void CheckPlayer()
     {
-        // 오른쪽 방향으로 Player 레이어만 레이캐스트
         RaycastHit2D hit = Physics2D.Raycast(
             rb.position,
-            Vector2.left,
-            1f,
+            Vector2.left, // 방향은 상황에 맞게 수정
+            attackDistance,
             playerLayer
         );
 
         if (hit.collider != null)
         {
-            // Player 감지 → 공격 모드
+            // Player 감지 → 이동 멈추고 공격 상태
             canMove = false;
-            OnAttack();
+            isAttack = true;
         }
         else
         {
-            // Player 없음 → 이동
+            // Player 없음 → 이동 모드
             canMove = true;
+            isAttack = false;
         }
     }
     
@@ -113,7 +107,6 @@ public class EnemyController : MonoBehaviour, IDamageable
         {
             isDeath = true;
             
-            rb.linearVelocityX = 0;
             anim.SetTrigger(DeathAnimParam);
         }
     }

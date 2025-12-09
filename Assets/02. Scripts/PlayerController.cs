@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     // 상태 변수
     private bool canMove = true;
+    private bool isAttack = false;
     private bool isDeath = false;
 
     public float AttackPower => attackPower;
@@ -40,7 +41,7 @@ public class PlayerController : MonoBehaviour, IDamageable
     [SerializeField] private EPlayerType playerType;
     
     // 감지할 레이어
-    [SerializeField] private LayerMask monsterLayer;
+    [SerializeField] private LayerMask enemyLayer;
 
     #region 생성 주기
     private void Start()
@@ -56,7 +57,10 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     private void Update()
     {
-        CheckMonster();
+        CheckEnemy();
+        
+        if(isAttack)
+            OnAttack();
     }
 
     private void FixedUpdate()
@@ -121,26 +125,27 @@ public class PlayerController : MonoBehaviour, IDamageable
     }
     
     // 앞에 몬스터가 있는가
-    private void CheckMonster()
+    private void CheckEnemy()
     {
         // 오른쪽 방향으로 Player 레이어만 레이캐스트
         RaycastHit2D hit = Physics2D.Raycast(
             rb.position,
             Vector2.right,
             attackDistance,
-            monsterLayer
+            enemyLayer
         );
 
         if (hit.collider != null)
         {
-            // Player 감지 → 공격 모드
+            // Enemy 감지 → 공격 모드
             canMove = false;
-            OnAttack();
+            isAttack = true;
         }
         else
         {
-            // Player 없음 → 이동
+            // Enemy 없음 → 이동
             canMove = true;
+            isAttack = false;
         }
     }
     
