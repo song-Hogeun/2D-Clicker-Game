@@ -42,6 +42,9 @@ public class PlayerController : MonoBehaviour, IDamageable
     
     // 감지할 레이어
     [SerializeField] private LayerMask enemyLayer;
+    
+    [SerializeField] private Transform headPos;
+    [SerializeField] private GameObject damageText;
 
     #region 생성 주기
     private void Start()
@@ -152,7 +155,12 @@ public class PlayerController : MonoBehaviour, IDamageable
     // 데미지 처리 함수
     public void TakeDamage(float damage)
     {
+        if (isDeath) return;
+        
         currentHP -= damage;
+        
+        var go = Instantiate(damageText);
+        go.GetComponent<DamageText>().Init(damage, headPos);
         
         anim.SetTrigger(DamageAnimParam);
 
