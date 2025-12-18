@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using DG.Tweening;
 using static Constants;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -25,12 +26,18 @@ public class EnemyController : MonoBehaviour, IDamageable
     
     // 감지할 레이어
     [SerializeField] private LayerMask playerLayer;
+
+    [SerializeField] private Transform headPos;
+    [SerializeField] private GameObject damageText;
+
+    private SpriteRenderer[] spriteRenderers;
     
     #region 생성 주기
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponentInChildren<Animator>();
+        spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
         
         currentHP = maxHP;
     }
@@ -104,12 +111,47 @@ public class EnemyController : MonoBehaviour, IDamageable
         
         currentHP -= damage;
         
+        var go = Instantiate(damageText);
+        go.GetComponent<DamageText>().Init(damage, headPos);
+        
         anim.SetTrigger(DamageAnimParam);
 
-        if (currentHP <= 0)
+        if (!isDeath && currentHP <= 0)
         {
             isDeath = true;
+            
             anim.SetTrigger(DeathAnimParam);
+            
+            // 1.5초 페이드아웃
+            foreach (var sr in spriteRenderers)
+            {
+                sr.DOFade(0f, 1.5f);
+            }
+            
+            // 페이드 종료 후 리스폰 처리
+            DOVirtual.DelayedCall(1.5f, () =>
+            {
+                // HP 복구
+                currentHP = maxHP;
+
+                // 위치 이동 (x + 10)
+                Vector3 pos = transform.position;
+                pos.x += 15f;
+                transform.position = pos;
+
+                // 투명도 복구
+                foreach (var sr in spriteRenderers)
+                {
+                    sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 1f);
+                }
+
+                // 상태 복구
+                isDeath = false;
+                canMove = true;
+
+                // 애니메이션 초기화
+                Think();
+            });
         }
     }
     #endregion
