@@ -12,7 +12,7 @@ TagManager:
   - Water
   - UI
   - Enemy
-  - Hitbox
+  - 
   - 
   - 
   - 
@@ -41,12 +41,32 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Sky
+    uniqueID: 2121706057
+    locked: 0
+  - name: Layer 1
+    uniqueID: 1977097939
+    locked: 0
+  - name: Layer 2
+    uniqueID: 2837714241
+    locked: 0
+  - name: Layer 3
+    uniqueID: 2790880333
+    locked: 0
+  - name: Layer 4
+    uniqueID: 2067576073
+    locked: 0
+  - name: Layer 5
+    uniqueID: 8255623
+    locked: 0
+  - name: Layer 6
+    uniqueID: 3276173355
+    locked: 0
+  - name: Layer 7
+    uniqueID: 2386833859
+    locked: 0
+  - name: Layer 8
+    uniqueID: 1367186215
+    locked: 0
   m_RenderingLayers:
   - Default
-  - Light Layer 1
-  - Light Layer 2
-  - Light Layer 3
-  - Light Layer 4
-  - Light Layer 5
-  - Light Layer 6
-  - Light Layer 7

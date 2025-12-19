@@ -8,7 +8,7 @@ public class UI_Manager : MonoBehaviour
     // 스테이지 정보 표시 텍스트
     [SerializeField] private Text stageInfoText;
     
-    // 강화, 장비, 동료, 상점 이벤트 버튼
+    // 강화, 동료, 상점 이벤트 버튼
     [SerializeField] private Button[] bottomButtons;
     // 팝업창들
     [SerializeField] private GameObject[] popups;
