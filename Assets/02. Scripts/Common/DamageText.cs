@@ -1,35 +1,14 @@
-using System;
 using UnityEngine;
-using DG.Tweening;
+using TMPro;
 
 public class DamageText : MonoBehaviour
 {
-    [SerializeField] private TextMesh textMesh;
-    [SerializeField] private float moveY = 1.0f;
-    [SerializeField] private float duration = 1.0f;
+    [SerializeField] private TextMesh text;
+    [SerializeField] private float lifeTime = 1f;
 
-    public void Init(float damage, Transform pos)
+    public void Init(float damage)
     {
-        textMesh.text = damage.ToString("0");
-
-        Color startColor = textMesh.color;
-        startColor.a = 1f;
-        textMesh.color = startColor;
-
-        transform.position = pos.position;
-
-        // 위로 이동
-        transform.DOMoveY(pos.position.y + moveY, duration);
-
-        // 알파값 직접 제어
-        DOVirtual.Float(1f, 0f, duration, a =>
-        {
-            Color c = textMesh.color;
-            c.a = a;
-            textMesh.color = c;
-        }).OnComplete(() =>
-        {
-            Destroy(gameObject);
-        });
+        text.text = damage.ToString("F0");
+        Destroy(gameObject, lifeTime);
     }
 }

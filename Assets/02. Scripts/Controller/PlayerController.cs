@@ -1,176 +1,36 @@
-using System;
 using UnityEngine;
-using static Constants;
 
-// 필수 컴포넌트
-[RequireComponent(typeof(Rigidbody2D))]
-public class PlayerController : MonoBehaviour, IDamageable
+[RequireComponent(typeof(DamageTextBinder))]
+public class PlayerController : BaseCharacter
 {
-    // 플레이어 전투 타입
-    public enum EPlayerType
-    {
-        Warrior,
-        Archor,
-        Wizard
-    }
-    
-    // 컴포넌트
-    private Rigidbody2D rb;
-    private Animator anim;
-
-    // 기본 스탯
-    private float applySpeed;
-    private float moveSpeed = 3f;
-    private float maxHP = 100f;
-    private float currentHP;
-    
-    // 공격 관련
-    private float attackPower = 15f;
-    private float attackDelay = 2f;
-    private float attackDistance;
-    private float currentAttackTimer;
-
-    // 상태 변수
-    private bool canMove = true;
-    private bool isAttack = false;
-    private bool isDeath = false;
-
-    public float AttackPower => attackPower;
-
-    // 플레이어 전투 타입
-    [SerializeField] private EPlayerType playerType;
+    private float offset = 0.8f;
+    private Vector3 spawnPos;
     
     // 감지할 레이어
-    [SerializeField] private LayerMask enemyLayer;
-    
-    [SerializeField] private Transform headPos;
-    [SerializeField] private GameObject damageText;
+    [SerializeField] private LayerMask targetLayer;
 
     #region 생성 주기
-    private void Start()
-    {
-        rb = GetComponent<Rigidbody2D>();
-        anim = GetComponentInChildren<Animator>();
 
-        InitStat(playerType);
+    private void Awake()
+    {
+        base.Awake();
+        spawnPos = new Vector3(
+            rootPos.position.x, 
+            rootPos.position.y + 0.8f, 0f);
         
-        applySpeed = moveSpeed;
-        currentHP = maxHP;
+        OnDamaged += (d, spawnPos) =>
+            DamageTextManager.Instance.Spawn(d, spawnPos);
     }
 
-    private void Update()
-    {
-        CheckEnemy();
-        
-        if(isAttack)
-            OnAttack();
-    }
-
-    private void FixedUpdate()
-    {
-        OnMove();
-    }
     #endregion
-
-    #region 행동 코드
-    // 이동 코드
-    private void OnMove()
+    
+    protected override Vector2 GetMoveDirection()
     {
-        if (!canMove)
-        {
-            anim.SetBool(MoveAnimParam, false);    
-            return;
-        }
-        
-        rb.linearVelocityX = applySpeed;
-        anim.SetBool(MoveAnimParam, true);
+        return Vector2.right;
     }
     
-    private void OnAttack()
+    protected override LayerMask GetTargetLayer()
     {
-        if (currentAttackTimer >= 0) 
-        {
-            currentAttackTimer -= Time.deltaTime;
-            return;
-        }
-
-        rb.linearVelocityX = 0;
-        anim.SetTrigger(AttackAnimParam);
-
-        currentAttackTimer = attackDelay;
+        return targetLayer;
     }
-    #endregion
-
-    #region 기타 함수
-
-    private void InitStat(EPlayerType playerType)
-    {
-        switch (playerType)
-        {
-            case EPlayerType.Warrior:
-                attackPower = 15f;
-                attackDelay = 1f;
-                attackDistance = 1f;
-                break;
-            
-            case EPlayerType.Archor:
-                attackPower = 50f;
-                attackDelay = 3.5f;
-                attackDistance = 2.2f;
-                break;
-            
-            case EPlayerType.Wizard:
-                attackPower = 100f;
-                attackDelay = 5f;
-                attackDistance = 3.4f;
-                break;
-        }
-    }
-    
-    // 앞에 몬스터가 있는가
-    private void CheckEnemy()
-    {
-        // 오른쪽 방향으로 Player 레이어만 레이캐스트
-        RaycastHit2D hit = Physics2D.Raycast(
-            rb.position,
-            Vector2.right,
-            attackDistance,
-            enemyLayer
-        );
-
-        if (hit.collider != null)
-        {
-            // Enemy 감지 → 공격 모드
-            canMove = false;
-            isAttack = true;
-        }
-        else
-        {
-            // Enemy 없음 → 이동
-            canMove = true;
-            isAttack = false;
-        }
-    }
-    
-    // 데미지 처리 함수
-    public void TakeDamage(float damage)
-    {
-        if (isDeath) return;
-        
-        currentHP -= damage;
-        
-        var go = Instantiate(damageText);
-        go.GetComponent<DamageText>().Init(damage, headPos);
-        
-        anim.SetTrigger(DamageAnimParam);
-
-        if (currentHP <= 0)
-        {
-            isDeath = true;
-            
-            rb.linearVelocityX = 0;
-            anim.SetTrigger(DeathAnimParam);
-        }
-    }
-    #endregion
 }

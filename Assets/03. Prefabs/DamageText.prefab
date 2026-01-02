@@ -45,9 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c2c49da60ac58b48b2b13e165e28f48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textMesh: {fileID: 411378925328421047}
-  moveY: 1
-  duration: 1
+  text: {fileID: 411378925328421047}
+  lifeTime: 1
 --- !u!1 &6968074231612365584
 GameObject:
   m_ObjectHideFlags: 0
