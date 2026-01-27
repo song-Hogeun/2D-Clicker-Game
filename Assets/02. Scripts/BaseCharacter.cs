@@ -8,13 +8,14 @@ using static Constants;
 /// Player / Enemy / Boss 공통 규칙만 담당
 /// </summary>
 [RequireComponent(typeof(Rigidbody2D))]
-public abstract class BaseCharacter : MonoBehaviour, IDamageable
+public abstract class BaseCharacter : MonoBehaviour, IDamageable, IPoolable
 {
     // ===== Components =====
     [SerializeField] protected Transform rootPos;
     protected Rigidbody2D rb;
     protected Animator anim;
-    protected SpriteRenderer[] spriteRenderers;           // 사망 시 페이드 효과 적용 위해 스프라이트 받아옴
+    protected SpriteRenderer[] spriteRenderers;               // 사망 시 페이드 효과 적용 위해 스프라이트 받아옴
+    [SerializeField] protected LayerMask targetLayer;         // 감지할 레이어
 
     // ===== Stats =====
     [Header("Base Stat")] 
@@ -34,7 +35,8 @@ public abstract class BaseCharacter : MonoBehaviour, IDamageable
     protected bool isDead;                              // 죽었는지 판단
     
     // ===== Action =====
-    public System.Action<float, Vector3> OnDamaged;
+    public Action<float, Vector3> OnDamaged;
+    public Action<BaseCharacter> OnDead;
 
     #region 생성 주기
 
@@ -54,6 +56,7 @@ public abstract class BaseCharacter : MonoBehaviour, IDamageable
     {
         if (isDead) return;
 
+        attackTimer -= Time.deltaTime;
         Think();
     }
 
@@ -66,10 +69,14 @@ public abstract class BaseCharacter : MonoBehaviour, IDamageable
     /// </summary>
     protected virtual void Think()
     {
-        if (!DetectTarget())
+        bool detected = DetectTarget();
+        
+        // 타겟 감지 x
+        if (!detected)
             Move();
 
-        if (DetectTarget() && CanAttackTarget())
+        // 타겟 감지 o, 타겟 공격 가능 상태
+        if (detected && CanAttackTarget())
             Attack();
     }
 
@@ -78,17 +85,13 @@ public abstract class BaseCharacter : MonoBehaviour, IDamageable
     /// </summary>
     protected virtual bool DetectTarget()
     {
-        RaycastHit2D hit = Physics2D.Raycast(
+        Collider2D hit = Physics2D.OverlapCircle(
             rootPos.position,
-            GetMoveDirection(),
             attackDistance,
-            GetTargetLayer()
+            targetLayer
         );
 
-        // 타겟을 감지 했을 시
-        if (hit.collider != null) return true;
-        // 타겟을 감지 하지 않았을 시
-        else return false;
+        return hit != null;
     }
 
     protected void OnDrawGizmos()
@@ -128,13 +131,9 @@ public abstract class BaseCharacter : MonoBehaviour, IDamageable
 
     protected virtual void Attack()
     {
-        if (attackTimer > 0f)
-        {
-            attackTimer -= Time.deltaTime;
-            return;
-        }
-
-        rb.linearVelocityX = 0;
+        Debug.Log("-- 공격 실행 --");
+        
+        rb.linearVelocity = Vector2.zero;
         anim.SetTrigger(AttackAnimParam);
         attackTimer = attackDelay;
     }
@@ -166,7 +165,26 @@ public abstract class BaseCharacter : MonoBehaviour, IDamageable
         isDead = true;
         rb.linearVelocity = Vector2.zero;
         anim.SetTrigger(DeathAnimParam);
+        
+        OnDead?.Invoke(this);
     }
 
     #endregion
+
+    public virtual void OnSpawn()
+    {
+        isDead = false;
+        currentHP = maxHP;
+        attackTimer = 0f;
+
+        rb.linearVelocity = Vector2.zero;
+
+        anim.Rebind();
+        anim.Update(0f);
+    }
+
+    public virtual void OnDespawn()
+    {
+        rb.linearVelocity = Vector2.zero;
+    }
 }

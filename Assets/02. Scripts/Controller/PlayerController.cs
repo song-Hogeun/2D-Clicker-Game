@@ -3,23 +3,13 @@ using UnityEngine;
 [RequireComponent(typeof(DamageTextBinder))]
 public class PlayerController : BaseCharacter
 {
-    private float offset = 0.8f;
-    private Vector3 spawnPos;
-    
-    // 감지할 레이어
-    [SerializeField] private LayerMask targetLayer;
-
     #region 생성 주기
 
     private void Awake()
     {
         base.Awake();
-        spawnPos = new Vector3(
-            rootPos.position.x, 
-            rootPos.position.y + 0.8f, 0f);
-        
-        OnDamaged += (d, spawnPos) =>
-            DamageTextManager.Instance.Spawn(d, spawnPos);
+        OnDamaged += (d, v) =>
+            DamageTextManager.Instance.Spawn(d, v);
     }
 
     #endregion
@@ -32,5 +22,17 @@ public class PlayerController : BaseCharacter
     protected override LayerMask GetTargetLayer()
     {
         return targetLayer;
+    }
+    
+    public override void OnSpawn()
+    {
+        base.OnSpawn();
+        // Enemy 리셋
+    }
+    
+    protected override void Die()
+    {
+        base.Die();
+        PoolManager.Instance.Release(this);
     }
 }

@@ -1,28 +1,17 @@
-using System;
 using UnityEngine;
-using DG.Tweening;
-using static Constants;
 
 [RequireComponent(typeof(DamageTextBinder))]
 public class EnemyController : BaseCharacter
 {
-    private float offset = 0.8f;
-    private Vector2 spawnPos;
-    
-    // 감지할 레이어
-    [SerializeField] private LayerMask targetLayer;     // 타겟 레이어
+    [SerializeField] private EnemyStat stat;
     
     #region 생성 주기
 
     private void Awake()
     {
         base.Awake();
-        spawnPos = new Vector3(
-            rootPos.position.x, 
-            rootPos.position.y + 0.8f, 0f);
-        
-        OnDamaged += (d, spawnPos) =>
-            DamageTextManager.Instance.Spawn(d, spawnPos);
+        OnDamaged += (d, v) =>
+            DamageTextManager.Instance.Spawn(d, v);
     }
     
     #endregion
@@ -35,5 +24,26 @@ public class EnemyController : BaseCharacter
     protected override LayerMask GetTargetLayer()
     {
         return targetLayer;
+    }
+    
+    public override void OnSpawn()
+    {
+        maxHP = stat.maxHP;
+        speed = stat.speed;
+        attackPower = stat.attackPower;
+        attackDelay = stat.attackDelay;
+        attackDistance = stat.attackDistance;
+
+        base.OnSpawn();
+    }
+
+    public override void OnDespawn()
+    {
+        base.OnDespawn();
+    }
+
+    protected override void Die()
+    {
+        base.Die();
     }
 }
