@@ -1,6 +1,5 @@
 using UnityEngine;
 
-[RequireComponent(typeof(DamageTextBinder))]
 public class EnemyController : BaseCharacter
 {
     [SerializeField] private EnemyStat stat;
@@ -10,8 +9,6 @@ public class EnemyController : BaseCharacter
     private void Awake()
     {
         base.Awake();
-        OnDamaged += (d, v) =>
-            DamageTextManager.Instance.Spawn(d, v);
     }
     
     #endregion
@@ -37,13 +34,15 @@ public class EnemyController : BaseCharacter
         base.OnSpawn();
     }
 
-    public override void OnDespawn()
-    {
-        base.OnDespawn();
-    }
-
     protected override void Die()
     {
         base.Die();
+        
+        Invoke("DieAction", 0.5f);
+    }
+    
+    private void DieAction()
+    {
+        OnDead?.Invoke(this);
     }
 }

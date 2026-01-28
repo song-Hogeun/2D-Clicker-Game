@@ -2686,11 +2686,10 @@ GameObject:
   - component: {fileID: 8167031468857074566}
   - component: {fileID: 8375825038828924750}
   - component: {fileID: -6066093390956329170}
-  - component: {fileID: 4996153343028453546}
   - component: {fileID: 5587157182102280330}
   m_Layer: 3
   m_Name: Warrior
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5795,18 +5794,6 @@ MonoBehaviour:
   attackPower: 10
   attackDelay: 1
   attackDistance: 1.2
---- !u!114 &4996153343028453546
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4766645330073800682}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f5cd67a249943559ea2a0552cf8dc30, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!70 &5587157182102280330
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

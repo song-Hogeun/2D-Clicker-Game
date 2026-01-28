@@ -4138,7 +4138,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3558880693096846157}
   - component: {fileID: 5112275886249108075}
-  - component: {fileID: 2093902173488598982}
   - component: {fileID: 2213597183854099363}
   - component: {fileID: 1769177355218118446}
   - component: {fileID: 4566048547761057316}
@@ -4191,18 +4190,6 @@ MonoBehaviour:
   attackDelay: 5
   attackDistance: 1.2
   stat: {fileID: 11400000, guid: 1cc3512e601c46c4d85a0e3497623969, type: 2}
---- !u!114 &2093902173488598982
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8161423463582906035}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f5cd67a249943559ea2a0552cf8dc30, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2213597183854099363
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8015,22 +8002,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Melee Hit Box
       objectReference: {fileID: 0}
-    - target: {fileID: 2354932513592344974, guid: 60d1ac59d18eb51499598a70ed94a606, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 2354932513592344974, guid: 60d1ac59d18eb51499598a70ed94a606, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3449243850369955205, guid: 60d1ac59d18eb51499598a70ed94a606, type: 3}
-      propertyPath: m_Size.x
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3449243850369955205, guid: 60d1ac59d18eb51499598a70ed94a606, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7725717516199587681, guid: 60d1ac59d18eb51499598a70ed94a606, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -8111,28 +8082,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8876948431982591935, guid: 60d1ac59d18eb51499598a70ed94a606, type: 3}
-      propertyPath: damage
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 8876948431982591935, guid: 60d1ac59d18eb51499598a70ed94a606, type: 3}
-      propertyPath: _collider
-      value: 
-      objectReference: {fileID: 333765559929180656}
-    - target: {fileID: 8876948431982591935, guid: 60d1ac59d18eb51499598a70ed94a606, type: 3}
-      propertyPath: targetLayerMask.m_Bits
-      value: 8
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 60d1ac59d18eb51499598a70ed94a606, type: 3}
---- !u!61 &333765559929180656 stripped
-BoxCollider2D:
-  m_CorrespondingSourceObject: {fileID: 3449243850369955205, guid: 60d1ac59d18eb51499598a70ed94a606, type: 3}
-  m_PrefabInstance: {fileID: 3134482267696981109}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &4632137098260908820 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7725717516199587681, guid: 60d1ac59d18eb51499598a70ed94a606, type: 3}

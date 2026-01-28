@@ -8,7 +8,7 @@ using static Constants;
 /// Player / Enemy / Boss 공통 규칙만 담당
 /// </summary>
 [RequireComponent(typeof(Rigidbody2D))]
-public abstract class BaseCharacter : MonoBehaviour, IDamageable, IPoolable
+public abstract class BaseCharacter : MonoBehaviour, IDamageable
 {
     // ===== Components =====
     [SerializeField] protected Transform rootPos;
@@ -94,14 +94,6 @@ public abstract class BaseCharacter : MonoBehaviour, IDamageable, IPoolable
         return hit != null;
     }
 
-    protected void OnDrawGizmos()
-    {
-        Debug.DrawRay(rootPos.position,
-            GetMoveDirection(),
-            Color.red,
-            attackDistance);
-    }
-
     /// <summary>
     /// 공격 가능 판단
     /// </summary>
@@ -165,8 +157,6 @@ public abstract class BaseCharacter : MonoBehaviour, IDamageable, IPoolable
         isDead = true;
         rb.linearVelocity = Vector2.zero;
         anim.SetTrigger(DeathAnimParam);
-        
-        OnDead?.Invoke(this);
     }
 
     #endregion

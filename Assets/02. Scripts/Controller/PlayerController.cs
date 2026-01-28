@@ -1,6 +1,5 @@
 using UnityEngine;
 
-[RequireComponent(typeof(DamageTextBinder))]
 public class PlayerController : BaseCharacter
 {
     #region 생성 주기
@@ -8,8 +7,6 @@ public class PlayerController : BaseCharacter
     private void Awake()
     {
         base.Awake();
-        OnDamaged += (d, v) =>
-            DamageTextManager.Instance.Spawn(d, v);
     }
 
     #endregion
@@ -33,6 +30,7 @@ public class PlayerController : BaseCharacter
     protected override void Die()
     {
         base.Die();
-        PoolManager.Instance.Release(this);
+        
+        
     }
 }
