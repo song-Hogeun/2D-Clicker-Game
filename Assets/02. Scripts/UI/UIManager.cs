@@ -1,10 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIManager : MonoBehaviour
+public class UIManager : Singleton<UIManager>
 {
-    private static UIManager instance;
-    
     [SerializeField] private Text currentStageText;
     [SerializeField] private Text currentLevelText;
     [SerializeField] private Text currentGoldText;
@@ -18,43 +16,21 @@ public class UIManager : MonoBehaviour
     
     private void Awake()
     {
-        if (instance != null)
-        {
-            Destroy(gameObject);
-            return;
-        }
-
-        instance = this;
-        DontDestroyOnLoad(gameObject);
-        
-        Init();
+        base.Awake();
     }
 
     private void Start()
     {
+        // 이벤트 연결
         DataManager.Instance.OnGoldChanged += UpdateGoldUI;
         DataManager.Instance.OnExpChanged += UpdateExpUI;
         DataManager.Instance.OnStageChanged += UpdateStageUI;
-        DataManager.Instance.OnExpChanged += UpdateExpUI;
-    }
-
-    private void Init()
-    {
-        int currentGold = DataManager.Instance.Gold;
-        int currentExp = DataManager.Instance.CurrentExp;
-        int requireExp = DataManager.Instance.RequiredExp;
-        int currentStage = DataManager.Instance.Stage;
-        int currentLevel = DataManager.Instance.Level;
-
-        UpdateExpUI(currentExp, requireExp);
-        UpdateGoldUI(currentGold);
-        UpdateStageUI(currentStage);
-        UpdateLevelUI(currentLevel);
+        DataManager.Instance.OnLevelChanged += UpdateLevelUI;
     }
     
     private void UpdateGoldUI(int gold)
     {
-        currentGoldText.text = string.Format($"#,###", gold.ToString());
+        currentGoldText.text = gold.ToString();
     }
     
     private void UpdateExpUI(int exp, int requireExp)

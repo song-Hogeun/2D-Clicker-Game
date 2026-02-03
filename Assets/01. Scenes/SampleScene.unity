@@ -878,7 +878,7 @@ GameObject:
   - component: {fileID: 111145410}
   - component: {fileID: 111145409}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Level BackGround
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1126,6 +1126,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -6066093390956329170, guid: 978ae4217f451274e8b6548b5cdc6644, type: 3}
+      propertyPath: maxHP
+      value: 99999
+      objectReference: {fileID: 0}
+    - target: {fileID: -6066093390956329170, guid: 978ae4217f451274e8b6548b5cdc6644, type: 3}
+      propertyPath: attackPower
+      value: 99999
+      objectReference: {fileID: 0}
     - target: {fileID: 4766645330073800682, guid: 978ae4217f451274e8b6548b5cdc6644, type: 3}
       propertyPath: m_Name
       value: Warrior
@@ -3803,7 +3811,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1641201015}
-  - {fileID: 1964760030}
   - {fileID: 972042367}
   m_Father: {fileID: 685139293}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -10388,6 +10395,7 @@ MonoBehaviour:
   enemyPrefabs:
   - {fileID: 5112275886249108075, guid: 17c4d214bfe15e94d9293ca2f1d24f63, type: 3}
   - {fileID: 183537501734472347, guid: 248dd2a77d3e352409520ced22ef2281, type: 3}
+  - {fileID: -6828160382132633938, guid: 70ef988419430ce4f919443249fd3af8, type: 3}
   player: {fileID: 143198623}
   spawnDistance: 12
   respawnDelay: 0.5
@@ -13397,11 +13405,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentStageText: {fileID: 1149538971}
-  currentLevelText: {fileID: 0}
+  currentLevelText: {fileID: 708250362}
   currentGoldText: {fileID: 1855270219}
   currentExpText: {fileID: 972042368}
-  expImage: {fileID: 1964760031}
-  bottomButtons: []
+  expImage: {fileID: 1641201016}
+  buttons: []
   popups: []
 --- !u!1 &1631397643
 GameObject:
@@ -13490,7 +13498,7 @@ GameObject:
   - component: {fileID: 1641201017}
   - component: {fileID: 1641201016}
   m_Layer: 5
-  m_Name: EXP Bar Background
+  m_Name: EXP Bar Gage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13535,8 +13543,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -3404455655209396371, guid: 0d7d0bf8307514eaf81aa72f558d3fb4, type: 3}
-  m_Type: 1
+  m_Sprite: {fileID: 9159566210088081630, guid: 0d7d0bf8307514eaf81aa72f558d3fb4, type: 3}
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
@@ -15523,81 +15531,6 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1950700723}
-  m_CullTransparentMesh: 1
---- !u!1 &1964760029
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1964760030}
-  - component: {fileID: 1964760032}
-  - component: {fileID: 1964760031}
-  m_Layer: 5
-  m_Name: EXP Bar Gage
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1964760030
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1964760029}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 350469675}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 480, y: 30}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1964760031
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1964760029}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.8115208, g: 1, b: 0.5518868, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 9159566210088081630, guid: 0d7d0bf8307514eaf81aa72f558d3fb4, type: 3}
-  m_Type: 3
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 0
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &1964760032
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1964760029}
   m_CullTransparentMesh: 1
 --- !u!1001 &1989664705
 PrefabInstance:

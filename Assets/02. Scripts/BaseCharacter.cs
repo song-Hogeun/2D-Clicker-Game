@@ -21,7 +21,7 @@ public abstract class BaseCharacter : MonoBehaviour, IDamageable
     [Header("Base Stat")] 
     [SerializeField] protected float speed;             // 이동 속도
     [SerializeField] protected float maxHP = 100f;      // 최대 체력
-    protected float currentHP;                          // 현재 체력
+    [SerializeField] protected float currentHP;                          // 현재 체력
     protected float applySpeed;                         // 적용 될 이동속도
 
     // ===== Combat =====

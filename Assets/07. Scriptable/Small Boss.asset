@@ -17,3 +17,5 @@ MonoBehaviour:
   attackPower: 20
   attackDelay: 5
   attackDistance: 1.2
+  kill_Exp: 100
+  kill_Gold: 100

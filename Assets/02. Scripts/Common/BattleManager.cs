@@ -44,11 +44,8 @@ public class BattleManager : MonoBehaviour
     {
         dead.OnDead -= HandleEnemyDead;
 
-        DataManager.Instance.AddGold(10);
-        DataManager.Instance.AddExp(20);
-
-        if (killCount % 10 == 0)
-            DataManager.Instance.NextStage();
+        // if (killCount % 10 == 0)
+        //     DataManager.Instance.NextStage();
 
         Destroy(dead.gameObject);
         Invoke(nameof(SpawnEnemy), 0.5f);

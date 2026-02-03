@@ -5,7 +5,7 @@ using UnityEngine;
 /// 골드, 경험치, 레벨, 스테이지 등
 /// 게임의 핵심 진행 데이터를 관리하는 싱글톤 매니저
 /// </summary>
-public class DataManager : MonoBehaviour
+public class DataManager : Singleton<DataManager>
 {
     /// <summary>
     /// 전역 접근을 위한 싱글톤 인스턴스
@@ -41,7 +41,13 @@ public class DataManager : MonoBehaviour
     public Action<int, int> OnExpChanged;
 
     /// <summary>
+    /// 레벨 UI 표시
+    /// </summary>
+    public Action<int> OnLevelChanged;
+    
+    /// <summary>
     /// 레벨업 시 호출
+    /// (레벨 업 연출)
     /// </summary>
     public Action<int> OnLevelUp;
 
@@ -152,7 +158,8 @@ public class DataManager : MonoBehaviour
         level++;
         requiredExp = CalculateRequiredExp(level);
 
-        OnLevelUp?.Invoke(level);
+        OnLevelUp?.Invoke(level);      // 레벨업 연출용
+        OnLevelChanged?.Invoke(level); // UI 갱신용
     }
 
     /// <summary>

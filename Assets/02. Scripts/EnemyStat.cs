@@ -8,4 +8,6 @@ public class EnemyStat : ScriptableObject
     public float attackPower;
     public float attackDelay;
     public float attackDistance;
+    public int kill_Exp;
+    public int kill_Gold;
 }
