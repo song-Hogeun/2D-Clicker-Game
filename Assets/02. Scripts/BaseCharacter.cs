@@ -30,6 +30,8 @@ public abstract class BaseCharacter : MonoBehaviour, IDamageable
     [SerializeField] protected float attackDelay = 1f;          // 공격 딜레이
     [SerializeField] protected float attackDistance = 1.2f;     // 공격 가능한 거리
     protected float attackTimer;                                // 공격 딜레이 타이머
+
+    public float AttackPower => attackPower;
     
     // ===== State =====
     protected bool isDead;                              // 죽었는지 판단

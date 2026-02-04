@@ -3,9 +3,6 @@ using UnityEngine;
 public class EnemyController : BaseCharacter
 {
     [SerializeField] private EnemyStat stat;
-
-    [SerializeField] private int kill_Gold;
-    [SerializeField] private int kill_Exp;
     
     #region 생성 주기
 
@@ -33,8 +30,6 @@ public class EnemyController : BaseCharacter
         attackPower = stat.attackPower;
         attackDelay = stat.attackDelay;
         attackDistance = stat.attackDistance;
-        kill_Gold = stat.kill_Gold;
-        kill_Exp = stat.kill_Exp;
 
         base.OnSpawn();
     }
@@ -43,8 +38,6 @@ public class EnemyController : BaseCharacter
     {
         base.Die();
         
-        DataManager.Instance.AddGold(kill_Gold);
-        DataManager.Instance.AddExp(kill_Exp);
         Invoke("DieAction", 0.5f);
     }
     

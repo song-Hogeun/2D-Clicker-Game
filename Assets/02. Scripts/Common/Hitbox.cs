@@ -14,6 +14,8 @@ public class Hitbox : MonoBehaviour
     private void Awake()
     {
         _collider.isTrigger = true; // 히트박스는 보통 Trigger로 사용
+
+        damage = GetComponentInParent<BaseCharacter>().AttackPower;
     }
 
     /// <summary>

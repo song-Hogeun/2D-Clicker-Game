@@ -7,8 +7,6 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private Text currentLevelText;
     [SerializeField] private Text currentGoldText;
     [SerializeField] private Text currentExpText;
-
-    [SerializeField] private Image expImage;
     
     [SerializeField] private Button[] buttons;
     
@@ -35,20 +33,17 @@ public class UIManager : Singleton<UIManager>
     
     private void UpdateExpUI(int exp, int requireExp)
     {
-        float percentage = exp / requireExp;
-     
-        currentExpText.text = percentage + " %";
-        expImage.fillAmount = percentage;
+        currentExpText.text = $"{exp} / {requireExp}";
     }
     
     private void UpdateStageUI(int stage)
     {
-        currentStageText.text = "스테이지 " + stage;
+        currentStageText.text = $"스테이지 {stage}";
     }
 
     private void UpdateLevelUI(int level)
     {
-        currentLevelText.text = "LV. " + level;
+        currentLevelText.text = $"LV. {level}";
     }
     
     private void OnPopupByIndex(int index)
