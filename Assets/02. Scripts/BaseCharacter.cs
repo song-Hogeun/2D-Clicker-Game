@@ -142,13 +142,6 @@ public abstract class BaseCharacter : MonoBehaviour, IDamageable
 
         currentHP -= damage;
         anim.SetTrigger(DamageAnimParam);
-        
-        // 시각 연출 리스너가 있으면 호출
-        var listeners = GetComponents<IDamageVisualListener>();
-        foreach (var listener in listeners)
-        {
-            listener.OnDamaged(damage, transform.position);
-        }
 
         if (currentHP <= 0)
             Die();
