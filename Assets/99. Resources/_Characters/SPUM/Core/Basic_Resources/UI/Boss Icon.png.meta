@@ -1,0 +1,304 @@
+fileFormatVersion: 2
+guid: f8bc4f7e23cd37246bf69a2fa4607886
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Boss Icon_60
+      rect:
+        serializedVersion: 2
+        x: 361
+        y: 396
+        width: 233
+        height: 287
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4058dfcc809cc1d4191103f272b80b6b
+      internalID: -1022818722
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss Icon_61
+      rect:
+        serializedVersion: 2
+        x: 942
+        y: 396
+        width: 259
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1315e8f92df661f4894670bb54eba1df
+      internalID: 100460538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 12a0b9937829e45438dcd9d3483f809c
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Boss Icon_0: -72834084
+      Boss Icon_1: 550766533
+      Boss Icon_10: -1138783700
+      Boss Icon_100: 561506497
+      Boss Icon_101: -810679565
+      Boss Icon_102: 236795446
+      Boss Icon_103: 1038222274
+      Boss Icon_104: 1379976297
+      Boss Icon_105: -1674460416
+      Boss Icon_106: 434203929
+      Boss Icon_107: -2024627947
+      Boss Icon_108: -1698529020
+      Boss Icon_109: 553216724
+      Boss Icon_11: -1596875736
+      Boss Icon_110: 1955793693
+      Boss Icon_111: 853274629
+      Boss Icon_112: 1826500921
+      Boss Icon_113: 1803517977
+      Boss Icon_114: -701796356
+      Boss Icon_115: -1590608794
+      Boss Icon_116: 1289869597
+      Boss Icon_117: -1126742471
+      Boss Icon_118: -72510863
+      Boss Icon_119: -1964195980
+      Boss Icon_12: -1975977978
+      Boss Icon_120: 760439166
+      Boss Icon_121: 811617757
+      Boss Icon_122: 300890513
+      Boss Icon_123: 1533485464
+      Boss Icon_124: -567571403
+      Boss Icon_125: -1787113670
+      Boss Icon_126: 647566181
+      Boss Icon_127: 2064355393
+      Boss Icon_128: -142030278
+      Boss Icon_129: 616352560
+      Boss Icon_13: -635908729
+      Boss Icon_14: 67260224
+      Boss Icon_15: 1458007011
+      Boss Icon_16: 1109977889
+      Boss Icon_17: 1057829731
+      Boss Icon_18: -340469474
+      Boss Icon_19: -1298809228
+      Boss Icon_2: -1096711717
+      Boss Icon_20: 980977174
+      Boss Icon_21: -1188555688
+      Boss Icon_22: -219681258
+      Boss Icon_23: 816296510
+      Boss Icon_24: -1004309205
+      Boss Icon_25: -343817541
+      Boss Icon_26: -153069430
+      Boss Icon_27: 2143346015
+      Boss Icon_28: 1295971875
+      Boss Icon_29: 644090111
+      Boss Icon_3: -538517369
+      Boss Icon_30: -555893083
+      Boss Icon_31: 841968980
+      Boss Icon_32: -506904507
+      Boss Icon_33: -58962222
+      Boss Icon_34: 916489104
+      Boss Icon_35: -1620302995
+      Boss Icon_36: -1361088875
+      Boss Icon_37: 1770806386
+      Boss Icon_38: -760777655
+      Boss Icon_39: 1845622629
+      Boss Icon_4: -957165112
+      Boss Icon_40: -1829908770
+      Boss Icon_41: -794679608
+      Boss Icon_42: 1952596618
+      Boss Icon_43: -39560775
+      Boss Icon_44: 2132042714
+      Boss Icon_45: 860404024
+      Boss Icon_46: -942845465
+      Boss Icon_47: -295395286
+      Boss Icon_48: -2129807442
+      Boss Icon_49: 2063162255
+      Boss Icon_5: 750937897
+      Boss Icon_50: -1994217468
+      Boss Icon_51: 562365579
+      Boss Icon_52: -434192721
+      Boss Icon_53: -539850245
+      Boss Icon_54: -1503248559
+      Boss Icon_55: 924452939
+      Boss Icon_56: -1716886524
+      Boss Icon_57: 64825545
+      Boss Icon_58: -1293840118
+      Boss Icon_59: -1454689230
+      Boss Icon_6: -833183315
+      Boss Icon_60: -1022818722
+      Boss Icon_61: 100460538
+      Boss Icon_62: -1343233011
+      Boss Icon_63: -58274759
+      Boss Icon_64: -1498278681
+      Boss Icon_65: 381060965
+      Boss Icon_66: -164298937
+      Boss Icon_67: -573607402
+      Boss Icon_68: 1295855183
+      Boss Icon_69: 841159164
+      Boss Icon_7: 567513245
+      Boss Icon_70: 1816078477
+      Boss Icon_71: -2057919100
+      Boss Icon_72: -936385095
+      Boss Icon_73: 1851351529
+      Boss Icon_74: -44549526
+      Boss Icon_75: 757652631
+      Boss Icon_76: -1983792765
+      Boss Icon_77: -1881041821
+      Boss Icon_78: 1964471159
+      Boss Icon_79: -1417985088
+      Boss Icon_8: -1174358846
+      Boss Icon_80: 1631282911
+      Boss Icon_81: 1246764533
+      Boss Icon_82: -326067342
+      Boss Icon_83: -43750407
+      Boss Icon_84: 524881135
+      Boss Icon_85: 200772717
+      Boss Icon_86: -2118622473
+      Boss Icon_87: -1520554977
+      Boss Icon_88: -57830245
+      Boss Icon_89: 36399277
+      Boss Icon_9: -173135718
+      Boss Icon_90: 365307636
+      Boss Icon_91: 1736114922
+      Boss Icon_92: 322281852
+      Boss Icon_93: -1782739378
+      Boss Icon_94: 1149759527
+      Boss Icon_95: 1192828808
+      Boss Icon_96: 715516348
+      Boss Icon_97: 85004563
+      Boss Icon_98: -2142186567
+      Boss Icon_99: 724131267
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

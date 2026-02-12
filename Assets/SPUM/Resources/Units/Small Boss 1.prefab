@@ -169,10 +169,12 @@ MonoBehaviour:
     m_Bits: 8
   speed: 0
   maxHP: 100
+  currentHP: 0
   attackPower: 10
   attackDelay: 1
   attackDistance: 1.2
   stat: {fileID: 11400000, guid: 0769612df487c01439ca8ef3116a690c, type: 2}
+  isBoss: 1
 --- !u!114 &1868892461520270429
 MonoBehaviour:
   m_ObjectHideFlags: 0

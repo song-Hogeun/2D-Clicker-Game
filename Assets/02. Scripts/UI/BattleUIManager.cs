@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIManager : Singleton<UIManager>
+public class BattleUIManager : Singleton<BattleUIManager>
 {
     [SerializeField] private Text currentStageText;
     [SerializeField] private Text currentLevelText;
@@ -46,11 +46,9 @@ public class UIManager : Singleton<UIManager>
         currentLevelText.text = $"LV. {level}";
     }
     
-    private void OnPopupByIndex(int index)
+    private void OnPopup(GameObject popup)
     {
-        if (index < 0 || index >= popups.Length) return;
-
-        popups[index].SetActive(true);
+        popup.SetActive(false);
     }
 
     public void ExitPopup(GameObject popup)
