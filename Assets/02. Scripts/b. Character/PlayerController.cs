@@ -30,7 +30,5 @@ public class PlayerController : BaseCharacter
     protected override void Die()
     {
         base.Die();
-        
-        
     }
 }
